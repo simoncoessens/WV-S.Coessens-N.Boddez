@@ -1,5 +1,5 @@
 # WV:S.Coessens,N.Boddez
-Wetenschappelijke vorming 2021
+Wetenschappelijke vorming 2021-2022
 
 # Onderzoeksvraag:
 H3. Hoe efficiënt is "efficiënt? Snelheid van reconstructie op basis van compressed sensing[bewerken]

@@ -12,4 +12,4 @@ Literatuur:
 Candes and Wakin (2008). An introduction to compressive sampling, IEEE Signal Processing Magazine 25(2), pp. 21-30. (https://authors.library.caltech.edu/10092/1/CANieeespm08.pdf)
 Wavelets with applications in signal and image processing. Cursustekst.
 
--> Via Toledo inschrijven vr de cursus "Wavelets with Applications in Signal and Image Processing (B-KUL-H03F7A)", rechtsboven
+-> Via Toledo inschrijven vr de cursus "Wavelets with Applications in Signal and Image Processing (B-KUL-H03F7A)", rechtsboven bij beheer

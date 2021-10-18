@@ -1,4 +1,4 @@
-# -WV2021-Simon-Noé-
+# WV:S.Coessens,N.Boddez
 Wetenschappelijke vorming 2021
 
 H3. Hoe efficiënt is "efficiënt? Snelheid van reconstructie op basis van compressed sensing[bewerken]

@@ -1,6 +1,7 @@
 # WV:S.Coessens,N.Boddez
 Wetenschappelijke vorming 2021
 
+# Onderzoeksvraag:
 H3. Hoe efficiënt is "efficiënt? Snelheid van reconstructie op basis van compressed sensing[bewerken]
 Compressed sensing, of compressive sampling, is een razend populaire nieuwe richting in signaalverwerking - getuige ook het onderwerp hierboven. Het gaat om dezelfde techniek in beide projecten, maar in dit geval toegepast op afbeeldingen. Compressed sensing laat toe om een afbeelding te reconstrueren op basis van onvoldoende gegevens. Een klassieke 10-megapixel (10MP) camera doet dat niet: de camera zal eerst tien miljoen pixels "bemonsteren", en vervolgens wordt een gecomprimeerde voorstelling gemaakt, zoals een JPEG-bestand. Een compressed-sensing camera zal veel minder metingen doen, en tracht rechtstreeks de gecomprimeerde versie van de afbeelding te genereren.
 

@@ -13,3 +13,12 @@ Candes and Wakin (2008). An introduction to compressive sampling, IEEE Signal Pr
 Wavelets with applications in signal and image processing. Cursustekst.
 
 -> Via Toledo inschrijven vr de cursus "Wavelets with Applications in Signal and Image Processing (B-KUL-H03F7A)", rechtsboven bij beheer
+
+
+
+Videoreeks over Fourier transformatie in afbeeldingen: 
+https://www.youtube.com/watch?v=bhxDXab0ffg
+https://www.youtube.com/watch?v=PsEsMIPYJBg
+https://www.youtube.com/watch?v=g8h-d1IJfGk
+https://www.youtube.com/watch?v=SRGApjQRzks
+

@@ -17,8 +17,8 @@ Wavelets with applications in signal and image processing. Cursustekst.
 
 
 Videoreeks over Fourier transformatie in afbeeldingen: 
-https://www.youtube.com/watch?v=bhxDXab0ffg
-https://www.youtube.com/watch?v=PsEsMIPYJBg
-https://www.youtube.com/watch?v=g8h-d1IJfGk
-https://www.youtube.com/watch?v=SRGApjQRzks
+1.https://www.youtube.com/watch?v=bhxDXab0ffg
+2.https://www.youtube.com/watch?v=PsEsMIPYJBg
+3.https://www.youtube.com/watch?v=g8h-d1IJfGk
+4.https://www.youtube.com/watch?v=SRGApjQRzks
 

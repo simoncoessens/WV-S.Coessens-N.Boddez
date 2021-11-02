@@ -21,4 +21,5 @@ Videoreeks over Fourier transformatie in afbeeldingen:
 2.https://www.youtube.com/watch?v=PsEsMIPYJBg
 3.https://www.youtube.com/watch?v=g8h-d1IJfGk
 4.https://www.youtube.com/watch?v=SRGApjQRzks
+5.https://www.youtube.com/watch?v=jQmlxMEi6j0
 

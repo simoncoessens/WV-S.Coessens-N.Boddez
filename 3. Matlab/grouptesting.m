@@ -18,7 +18,7 @@ end
 % A = Matrix containing lineair combinations of samples
 % m = measurement size
 m = 6*inf_pers;
-A = round(rand(m,n))/sqrt(m);        
+A = round(rand(m,n));        
 
 % b = undersampled measurement
 

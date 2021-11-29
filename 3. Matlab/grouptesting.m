@@ -3,7 +3,7 @@
 % n = group size
 % p = probability that a person is infected 
 
-n = 10000;
+n = 1000;
 p = 0.01;
 inf_pers = round(n*p);
 
@@ -19,17 +19,10 @@ end
 % A = Matrix containing lineair combinations of samples
 % m = measurement size
 m = 6*inf_pers;
-A = round(rand(m,n));        
+A = round(rand(m,n))/sqrt(m);        
 
 % b = undersampled measurement
-b = zeros(m,1);
-for i = 1:inf_pers
-    for j = 1:m
-        if A(j,pos_idx(i)) == 1
-            b(j)= b(j) + 1;
-        end
-    end
-end
+b = A*result;
 
 
 % y = l_2 solution to A*y = b.
@@ -63,8 +56,13 @@ end
 
 
 err_p = (1 - err/inf_pers)*100;
-fprintf('The solution is %f percent correct',err_p)
+fprintf('The solution is %f percent correct \n',err_p)
 
+% Absolute and relative error of reconstruction (using l1 norm)
+abs_err = norm(result-x, 1);
+rel_err = abs_err/norm(result, 1);
+fprintf('Absolute error = %f, \nRelative error = %f \n', abs_err, rel_err)
 
+inf_pers
 
 

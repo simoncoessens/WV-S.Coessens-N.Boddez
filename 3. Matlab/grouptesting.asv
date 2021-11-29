@@ -31,7 +31,6 @@ for i = 1:inf_pers
     end
 end
 
-
 % y = l_2 solution to A*y = b.
 y = pinv(A)*b;
 
@@ -61,6 +60,7 @@ for i =1:inf_pers
     end
 end
 
+<<<<<<< HEAD
 
 err_p = (1 - err/inf_pers)*100;
 
@@ -70,3 +70,7 @@ fprintf('The solution is %f percent correct',err_p)
 
 
 
+=======
+err_p = (1 - err/inf_pers)*100;
+fprintf('The solution is %f percent correct',err_p)
+>>>>>>> f3fc1b1349fc6dbd9805871f735aa4b6d863d321

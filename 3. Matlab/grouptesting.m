@@ -1,5 +1,4 @@
 % Group testing model solver using compressed sampling
-
 % n = group size
 % p = probability that a person is infected 
 
@@ -10,7 +9,7 @@ inf_pers = round(n*p);
 % vector that contains the exact result (1 entry for infected person)
 % pos_idx = vector containing indices of n*p number of infected persons
 result = zeros(n,1); 
-pos_idx = round(n*rand(inf_pers,1));
+pos_idx = round((n-1)*rand(inf_pers,1)) + 1;
 pos_idx = sort(pos_idx);
 for i = 1:(inf_pers)
    result(pos_idx(i)) = 1;
@@ -22,8 +21,18 @@ m = 6*inf_pers;
 A = round(rand(m,n))/sqrt(m);        
 
 % b = undersampled measurement
-b = A*result;
 
+% b = A*result;
+
+b = zeros(m,1);
+for i = 1:inf_pers
+    for j = 1:m
+        if A(j,pos_idx(i)) == 1
+            b(j)= b(j) + 1;
+            %b(j)= 1;
+        end
+    end
+end
 
 % y = l_2 solution to A*y = b.
 y = pinv(A)*b;
@@ -54,7 +63,6 @@ for i =1:inf_pers
     end
 end
 
-
 err_p = (1 - err/inf_pers)*100;
 fprintf('The solution is %f percent correct \n',err_p)
 
@@ -62,7 +70,3 @@ fprintf('The solution is %f percent correct \n',err_p)
 abs_err = norm(result-x, 1);
 rel_err = abs_err/norm(result, 1);
 fprintf('Absolute error = %f, \nRelative error = %f \n', abs_err, rel_err)
-
-inf_pers
-
-

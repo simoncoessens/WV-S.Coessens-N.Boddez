@@ -4,14 +4,15 @@
 % mf = measurement factor
 
 
-function err_p = group_tester(n,p,mf)
+function res = group_tester(n,p,mf)
 
+tic;
 inf_pers = round(n*p);
 
 % vector that contains the exact result (1 entry for infected person)
 % pos_idx = vector containing indices of n*p number of infected persons
 result = zeros(n,1); 
-pos_idx = round(n*rand(inf_pers,1));
+pos_idx = round((n-1)*rand(inf_pers,1)) + 1;
 pos_idx = sort(pos_idx);
 for i = 1:(inf_pers)
    result(pos_idx(i)) = 1;
@@ -61,5 +62,7 @@ for i =1:inf_pers
     end
 end
 
+time = toc;
 err_p = (1 - err/inf_pers)*100;
+res = [err_p,time];
 %fprintf('The solution is %f percent correct',err_p)

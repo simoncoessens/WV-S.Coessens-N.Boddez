@@ -20,16 +20,8 @@ end
 m = 6*inf_pers;
 A = round(rand(m,n));        
 
-% b = undersampled measurement
-b = zeros(m,1);
-for i = 1:inf_pers
-    for j = 1:m
-        if A(j,pos_idx(i)) == 1
-            b(j)= b(j) + 1;
-            %b(j)= 1;
-        end
-    end
-end
+% b = undersampled measurement, b = A v result
+b = boolMatrixMult(A, result);
 
 % y = l_2 solution to A*y = b.
 y = pinv(A)*b;
@@ -39,7 +31,9 @@ y = pinv(A)*b;
 % Use "L1 magic".
 
 x = l1eq_pd(y,A,A',b,5e-3,32);
-x = round(x);
+
+% Random Lineair Programming
+x = RLP(x, b, A, 1e-100);
 
 result_undersampled = zeros(inf_pers,1);
 count = 1;
@@ -60,5 +54,10 @@ for i =1:inf_pers
     end
 end
 
+
 err_p = (1 - err/inf_pers)*100;
-fprintf('The solution is %f percent correct',err_p)
+fprintf('The solution is %f percent correct\n',err_p)
+
+abs_err = norm(result-x, 1);
+rel_err = abs_err/norm(result, 1);
+fprintf('Absolute error = %f, \nRelative error = %f \n', abs_err, rel_err)

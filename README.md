@@ -25,3 +25,5 @@ Videoreeks over Fourier transformatie in afbeeldingen:
 
 
 Presentatie 8 november: https://www.overleaf.com/4192473368pxfwwbwrktsk
+
+Probleemstelling 6 december: https://www.overleaf.com/8958935127yfwbvgkpbbbm

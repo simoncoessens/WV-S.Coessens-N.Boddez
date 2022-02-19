@@ -20,8 +20,25 @@ end
 m = 6*inf_pers;
 A = round(rand(m,n));        
 
+
 % b = undersampled measurement, b = A v result
 b = boolMatrixMult(A, result);
+
+
+% b = undersampled measurement
+
+% b = A*result;
+
+%b = zeros(m,1);
+%for i = 1:inf_pers
+%    for j = 1:m
+%        if A(j,pos_idx(i)) == 1
+%            b(j)= b(j) + 1;
+%            %b(j)= 1;
+%        end
+%    end
+%end
+
 
 % y = l_2 solution to A*y = b.
 y = pinv(A)*b;
@@ -56,8 +73,12 @@ end
 
 
 err_p = (1 - err/inf_pers)*100;
+
+
 fprintf('The solution is %f percent correct\n',err_p)
 
+% Absolute and relative error of reconstruction (using l1 norm)
 abs_err = norm(result-x, 1);
 rel_err = abs_err/norm(result, 1);
 fprintf('Absolute error = %f, \nRelative error = %f \n', abs_err, rel_err)
+

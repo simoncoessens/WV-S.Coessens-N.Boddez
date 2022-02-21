@@ -1,24 +1,25 @@
 % Group testing model solver using compressed sampling
 % n = group size
-% p = probability that a person is infected 
+% k = number of infected persons
 
 n = 1000;
-p = 0.01;
-inf_pers = round(n*p);
+k = 10;
 
 % vector that contains the exact result (1 entry for infected person)
-% pos_idx = vector containing indices of n*p number of infected persons
+% pos_idx = vector containing indices of k number of infected persons
 result = zeros(n,1); 
-pos_idx = round((n-1)*rand(inf_pers,1)) + 1;
+pos_idx = round((n-1)*rand(k,1)) + 1;
 pos_idx = sort(pos_idx);
-for i = 1:(inf_pers)
+for i = 1:k
    result(pos_idx(i)) = 1;
 end
 
 % A = Matrix containing lineair combinations of samples
 % m = measurement size
-m = 6*inf_pers;
-A = round(rand(m,n));        
+% p = P(A_i,j == 1) = de kans dat een individu in een test zit
+p = 1/k;
+m = 6*k;
+A = double(rand(m,n) < p);        
 
 
 % b = undersampled measurement, b = A v result
@@ -30,7 +31,7 @@ b = boolMatrixMult(A, result);
 % b = A*result;
 
 %b = zeros(m,1);
-%for i = 1:inf_pers
+%for i = 1:k
 %    for j = 1:m
 %        if A(j,pos_idx(i)) == 1
 %            b(j)= b(j) + 1;
@@ -52,7 +53,7 @@ x = l1eq_pd(y,A,A',b,5e-3,32);
 % Random Lineair Programming
 x = RLP(x, b, A, 1e-100);
 
-result_undersampled = zeros(inf_pers,1);
+result_undersampled = zeros(k,1);
 count = 1;
 for i = 1:n
     if x(i) == 1
@@ -65,14 +66,14 @@ result_undersampled = sort(result_undersampled);
 
 % Check exactness of reconstruction
 err = 0;
-for i =1:inf_pers
+for i =1:k
     if x(pos_idx(i))~=1 
         err = err +1;
     end
 end
 
 
-err_p = (1 - err/inf_pers)*100;
+err_p = (1 - err/k)*100;
 
 
 fprintf('The solution is %f percent correct\n',err_p)

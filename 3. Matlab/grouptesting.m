@@ -25,19 +25,6 @@ A = double(rand(m,n) < p);
 % b = undersampled measurement, b = A v result
 b = double(logical(A*result));
 
-% b = undersampled measurement
-
-% b = A*result;
-
-%b = zeros(m,1);
-%for i = 1:k
-%    for j = 1:m
-%        if A(j,pos_idx(i)) == 1
-%            b(j)= b(j) + 1;
-%            %b(j)= 1;
-%        end
-%    end
-%end
 
 %------ oplossing via L1 magic ------
 % y = l_2 solution to A*y = b.
@@ -76,5 +63,15 @@ x = RLP(x, b, A, 1e-5);
 % Absolute and relative error of reconstruction (using l1 norm)
 abs_err = norm(result-x, 1);
 rel_err = abs_err/norm(result, 1);
-fprintf('Absolute error = %f, \nRelative error = %f \n', abs_err, rel_err)
+fprintf('Absolute error = %f, \nRelative error = %f \n\n', abs_err, rel_err)
+
+% Aantal gevonden/niet gevonden/foutief aangeduid
+deffective_found = norm(double(and(result, x)), 1);
+deffective_not_found = norm(result - double(and(result, x)), 1);
+undeffective_found = norm(x - double(and(result, x)), 1);
+fprintf('besmet als besmet aangeduid: %f\n', deffective_found);
+fprintf('niet besmet als besmet aangeduid: %f\n', undeffective_found);
+fprintf('besmet als niet besmet aangeduid: %f\n', deffective_not_found);
+
+
 

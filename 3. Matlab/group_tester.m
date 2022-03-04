@@ -4,65 +4,69 @@
 % mf = measurement factor
 
 
-function res = group_tester(n,p,mf)
+function succes = group_tester(m)
 
-tic;
-inf_pers = round(n*p);
+% Group testing model solver using compressed sampling
+% n = group size
+% k = number of infected persons
+
+n = 150;
+k = 4;
 
 % vector that contains the exact result (1 entry for infected person)
-% pos_idx = vector containing indices of n*p number of infected persons
+% pos_idx = vector containing indices of k number of infected persons
 result = zeros(n,1); 
-pos_idx = round((n-1)*rand(inf_pers,1)) + 1;
+pos_idx = round((n-1)*rand(k,1)) + 1;
 pos_idx = sort(pos_idx);
-for i = 1:(inf_pers)
+for i = 1:k
    result(pos_idx(i)) = 1;
 end
 
-% A = Matrix containing lineair combinations of samples
+% A = Measurement matrix containing lineair combinations of samples
 % m = measurement size
-m = mf*inf_pers;
-A = round(rand(m,n));        
+% p = P(A_i,j == 1) = de kans dat een individu in een test zit
+p = 1/k;
+A = double(rand(m,n) < p);        
 
-% b = undersampled measurement
-b = zeros(m,1);
-for i = 1:inf_pers
-    for j = 1:m
-        if A(j,pos_idx(i)) == 1
-            b(j)= b(j) + 1;
-        end
-    end
-end
 
+% b = undersampled measurement, b = A v result
+b = double(logical(A*result));
+
+
+%------ oplossing via L1 magic ------
 % y = l_2 solution to A*y = b.
-y = pinv(A)*b;
+% y = pinv(A)*b;
 
 % Solve compressed sensing problem with l1 optimization
 % x = l_1 solution to A*x = b.
 % Use "L1 magic".
 
-x = l1eq_pd(y,A,A',b,5e-3,32);
-x = round(x);
+% x = l1eq_pd(y,A,A',b,5e-3,32);
 
-result_undersampled = zeros(inf_pers,1);
-count = 1;
-for i = 1:n
-    if x(i) == 1
-        result_undersampled(count) = i;
-        count = count + 1;
-    end
-end
-result_undersampled = sort(result_undersampled);
+%------ oplossing via linprog ------
+% f(x) wordt geminimaliseerd 
+% zodat A*x <= b en
+% Aj * x = 0 en (Aj = zie Malioutov problem in (8))
+% lb <= x <= ub
+f = ones(n,1);
+lb = zeros(n,1);
+ub = ones(n,1);
 
-
-% Check exactness of reconstruction
-err = 0;
-for i =1:inf_pers
-    if x(pos_idx(i))~=1 
-        err = err +1;
-    end
+Aj = zeros(0);
+for i = 1:m
+    if b(i) == 0
+        Aj = [Aj ; A(i,:)];
+    end    
 end
 
-time = toc;
-err_p = (1 - err/inf_pers)*100;
-res = [err_p,time];
-%fprintf('The solution is %f percent correct',err_p)
+bj = zeros(m-norm(b,1),1);
+
+x = linprog(f, -A, -b, Aj, bj, lb, ub);
+
+% Random Lineair Programming
+x = RLP(x, b, A, 1e-5);
+
+succes = isequal(x, result);
+
+
+

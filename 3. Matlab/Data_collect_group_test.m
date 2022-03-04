@@ -1,22 +1,20 @@
-mf = 6;
-i = 3;
-
-err = zeros(5,3);
+max_m = 100; % De maximale waarde voor m
+numTest = 100; % Het aantal tests waarover we het gemiddelde nemen
+testResult = zeros(max_m, numTest); % Hierin komen de resultaten
 count = 1;
-for n = 1000:2000:10000
-    err(count,1) = n;
-    for j = 1:i
-        err(count,2:end) = err(count,2:end) + group_tester(n,0.05,mf);
+for m = 1:max_m
+    for i = 1:numTest
+        testResult(m,i) = group_tester(m);
     end
-    count = count + 1;
 end
 
-err = err/i;
-figure(1)
-subplot(1,2,1)
-title(['error percentage'],'FontSize',14)
-plot(err(:,1),err(:,2))
-ylim([0,100])
+percent_succes_per_m = zeros(max_m,1);
+for m = 1:max_m
+    percent_succes_per_m(m) = sum(testResult(m,:))/numTest;
+end
 
-subplot(1,2,2)
-plot(err(:,1),err(:,2))
+figure
+x_as = 1:max_m;
+plot(x_as, percent_succes_per_m)
+xlabel("m");
+ylabel("percentage of succesful recreations")

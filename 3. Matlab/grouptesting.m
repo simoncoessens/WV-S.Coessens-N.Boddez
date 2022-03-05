@@ -54,7 +54,7 @@ end
 
 bj = zeros(m-norm(b,1),1);
 
-x = linprog(f, -A, -b, Aj, bj, lb, ub);
+[x,fval,exitflag,output] = linprog(f, -A, -b, Aj, bj, lb, ub);
 
 % Random Lineair Programming
 x = RLP(x, b, A, 1e-5);

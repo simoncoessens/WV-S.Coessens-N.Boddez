@@ -1,7 +1,6 @@
 max_m = 100; % De maximale waarde voor m
 numTest = 100; % Het aantal tests waarover we het gemiddelde nemen
 testResult = zeros(max_m, numTest); % Hierin komen de resultaten
-count = 1;
 for m = 1:max_m
     for i = 1:numTest
         testResult(m,i) = group_tester(m);
@@ -16,5 +15,5 @@ end
 figure
 x_as = 1:max_m;
 plot(x_as, percent_succes_per_m)
-xlabel("m");
-ylabel("percentage of succesful recreations")
+xlabel("Number of tests");
+ylabel("Successful recreations (%)")

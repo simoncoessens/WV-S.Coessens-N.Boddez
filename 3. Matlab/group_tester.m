@@ -61,7 +61,9 @@ end
 
 bj = zeros(m-norm(b,1),1);
 
-x = linprog(f, -A, -b, Aj, bj, lb, ub);
+options = optimoptions('linprog', 'Algorithm', 'dual-simplex','Display','off');
+
+x = linprog(f, -A, -b, Aj, bj, lb, ub, options);
 
 % Random Lineair Programming
 x = RLP(x, b, A, 1e-5);

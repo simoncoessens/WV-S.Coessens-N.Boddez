@@ -3,7 +3,7 @@ numTest = 100; % Het aantal tests waarover we het gemiddelde nemen
 testResult = zeros(max_m, numTest); % Hierin komen de resultaten
 for m = 1:max_m
     for i = 1:numTest
-        testResult(m,i) = group_tester(m);
+        testResult(m,i) = group_tester(m, 'dual-simplex');
     end
 end
 

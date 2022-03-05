@@ -4,7 +4,7 @@
 % mf = measurement factor
 
 
-function succes = group_tester(m)
+function succes = group_tester(m, algorithm)
 
 % Group testing model solver using compressed sampling
 % n = group size
@@ -61,7 +61,7 @@ end
 
 bj = zeros(m-norm(b,1),1);
 
-options = optimoptions('linprog', 'Algorithm', 'dual-simplex','Display','off');
+options = optimoptions('linprog', 'Algorithm', algorithm,'Display','off');
 
 x = linprog(f, -A, -b, Aj, bj, lb, ub, options);
 

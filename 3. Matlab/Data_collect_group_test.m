@@ -1,5 +1,5 @@
 max_m = 100; % De maximale waarde voor m
-numTest = 100; % Het aantal tests waarover we het gemiddelde nemen
+numTest = 1; % Het aantal tests waarover we het gemiddelde nemen
 testResult = zeros(max_m, numTest); % Hierin komen de resultaten
 for m = 1:max_m
     for i = 1:numTest

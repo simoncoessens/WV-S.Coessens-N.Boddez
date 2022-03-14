@@ -41,4 +41,4 @@ LINPROGRAMMING TOOLKITS:
 - linprog matlab
 - GNU Lineari programming https://en.wikipedia.org/wiki/GNU_Linear_Programming_Kit
 - CPLEX optimizer https://www.ibm.com/analytics/cplex-optimizer
-
+- Gorubi https://www.gurobi.com/

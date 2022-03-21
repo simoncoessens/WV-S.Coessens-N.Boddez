@@ -27,3 +27,19 @@ Videoreeks over Fourier transformatie in afbeeldingen:
 Presentatie 8 november: https://www.overleaf.com/4192473368pxfwwbwrktsk
 
 Probleemstelling 6 december: https://www.overleaf.com/8958935127yfwbvgkpbbbm
+
+
+TO DO:
+- andere lineair programmeren toolkit gebruiken en testen
+- linprog runt in matlab of erbuiten?
+- een praktische toepassingen uitwerken
+- onderzoek spaarsheid 
+- hoe op departementale pc's testen?
+
+
+LINPROGRAMMING TOOLKITS:
+- linprog matlab
+- GNU Lineari programming https://en.wikipedia.org/wiki/GNU_Linear_Programming_Kit
+- CPLEX optimizer https://www.ibm.com/analytics/cplex-optimizer
+-   - **https://www.tu-chemnitz.de/mathematik/discrete/manuals/cplex/doc/getstart/html/ilocplex13.html**
+- Gorubi https://www.gurobi.com/

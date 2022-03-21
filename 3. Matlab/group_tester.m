@@ -1,17 +1,9 @@
 % Group testing model solver using compressed sampling
 % n = group size
-% p = probability that a person is infected 
-% mf = measurement factor
-
-
-function succes = group_tester(m, algorithm)
-
-% Group testing model solver using compressed sampling
-% n = group size
 % k = number of infected persons
+% m = number of tests
 
-n = 150;
-k = 4;
+function succes = group_tester(n, k, m)
 
 % vector that contains the exact result (1 entry for infected person)
 % pos_idx = vector containing indices of k number of infected persons
@@ -33,17 +25,6 @@ A = double(rand(m,n) < p);
 b = double(logical(A*result));
 
 
-%------ oplossing via L1 magic ------
-% y = l_2 solution to A*y = b.
-% y = pinv(A)*b;
-
-% Solve compressed sensing problem with l1 optimization
-% x = l_1 solution to A*x = b.
-% Use "L1 magic".
-
-% x = l1eq_pd(y,A,A',b,5e-3,32);
-
-%------ oplossing via linprog ------
 % f(x) wordt geminimaliseerd 
 % zodat A*x <= b en
 % Aj * x = 0 en (Aj = zie Malioutov problem in (8))
@@ -61,7 +42,7 @@ end
 
 bj = zeros(m-norm(b,1),1);
 
-options = optimoptions('linprog', 'Algorithm', algorithm,'Display','off');
+options = optimoptions('linprog', 'Display', 'off');
 
 x = linprog(f, -A, -b, Aj, bj, lb, ub, options);
 

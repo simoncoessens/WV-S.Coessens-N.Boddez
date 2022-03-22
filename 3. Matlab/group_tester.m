@@ -10,8 +10,8 @@ function succes = group_tester(m, algorithm)
 % n = group size
 % k = number of infected persons
 
-n = 150;
-k = 4;
+n = 1000;
+k = 10;
 
 % vector that contains the exact result (1 entry for infected person)
 % pos_idx = vector containing indices of k number of infected persons

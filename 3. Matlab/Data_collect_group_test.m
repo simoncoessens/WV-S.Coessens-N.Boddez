@@ -1,3 +1,4 @@
+
 min_m = 400; % De startwaarde voor m
 max_m = 1000; % De maximale waarde voor m
 delta_m = max_m - min_m;

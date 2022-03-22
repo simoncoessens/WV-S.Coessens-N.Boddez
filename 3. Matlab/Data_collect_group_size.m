@@ -8,7 +8,7 @@ count = 1;
 for n = 0:step:max_group
     m = round((60/150)*n);
     for i = 1:numTest
-        testResult(count,i) = group_tester_extra_param(m, 'dual-simplex',n);
+        testResult(count,i) = group_tester(n, (4/150)*n, m);
     end
     count = count + 1;
     disp('iter');

@@ -32,18 +32,46 @@ f = ones(n,1);
 lb = zeros(n,1);
 ub = ones(n,1);
 
+% Split A up in Ai and Aj
 Aj = zeros(0);
+Ai = zeros(0);
 for i = 1:m
     if b(i) == 0
         Aj = [Aj ; A(i,:)];
-    end    
+    else 
+        Ai = [Ai ; A(i,:)];
+    end
 end
 
-bj = zeros(m-norm(b,1),1);
 
-options = optimoptions('linprog', 'Display', 'off');
+% Calculate bi and bj; and add noise
+bj = [];
+bi = [];
+counter_j = 1;
+counter_i = 1;
+for i=1:m
+    if b(i) == 0
+        bj(counter_j, 1) = 0;
+        counter_j = counter_j + 1;
+    else
+        bi(counter_i, 1) = b(i);
+        counter_i = counter_i + 1;
+    end
 
-x = linprog(f, -A, -b, Aj, bj, lb, ub, options);
+%     noise = rand(1,1) < 0.02;
+%     if noise
+%         b(i) = not(b(i));
+%         if b(i) == 1
+%             bj(counter_j-1, 1) = 1;
+%         end
+%     end
+end
+
+%options = optimoptions('linprog', 'Display', 'off');
+options = optimoptions('linprog');
+
+x = linprog(f, -Ai, -bi, Aj, bj, lb, ub, options);
+%x = linprog(f, -A, -b);
 
 % Random Lineair Programming
 x = RLP(x, b, A, 1e-5);

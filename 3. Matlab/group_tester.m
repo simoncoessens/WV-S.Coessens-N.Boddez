@@ -44,7 +44,7 @@ for i = 1:m
 end
 
 
-% Calculate bi and bj; and add noise
+% Calculate bi and bj
 bj = [];
 bi = [];
 counter_j = 1;
@@ -57,14 +57,6 @@ for i=1:m
         bi(counter_i, 1) = b(i);
         counter_i = counter_i + 1;
     end
-
-%     noise = rand(1,1) < 0.02;
-%     if noise
-%         b(i) = not(b(i));
-%         if b(i) == 1
-%             bj(counter_j-1, 1) = 1;
-%         end
-%     end
 end
 
 %options = optimoptions('linprog', 'Display', 'off');

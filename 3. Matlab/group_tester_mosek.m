@@ -60,10 +60,9 @@ prob.blc = lbb;
 prob.buc = ubb;
 prob.blx = lbx;
 prob.bux = ubx;
-% GEBRUIK param OM TE KIEZEN WELKE OPTIMIZER GEBRUIKT WORDT
-% (https://docs.mosek.com/latest/toolbox/solver-parameters.html#doc-solver-parameters)
 param=[];
-cmd = 'minimize';
+%param.MSK_IPAR_OPTIMIZER = 'MSK_OPTIMIZER_INTPNT'; % kies solver
+cmd = 'minimize echo(0)'; % echo(0) = geen output
 
 [rcode,res] = mosekopt(cmd,prob,param);
 
@@ -71,10 +70,10 @@ res.rcode   = rcode;
 sol = res.sol;
 
 % Interior-point solution.
-sol.itr.xx      % x solution.
+%sol.itr.xx      % x solution.
 
 % Basic solution.
-sol.bas.xx      % x solution in basic solution.
+%sol.bas.xx      % x solution in basic solution.
 
 succes = isequal(sol.bas.xx, result);
 end

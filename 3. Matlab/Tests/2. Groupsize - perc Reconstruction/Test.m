@@ -7,6 +7,7 @@ function succes = Test(n,m,k,alg)
 if alg == 'lin'
     % init linprog vars
     [f, A, b, Aj, bj, lb, ub, result] = TestSetupLinprog(n,m,k);
+    options = optimoptions('linprog','Display','none'); 
     x = linprog(f, -A, -b, Aj, bj, lb, ub, options);
     succes = isequal(x, result);
 else

@@ -10,7 +10,7 @@ function succes = group_tester_extra_param(m, algorithm, n)
 % n = group size
 % k = number of infected persons
 
-k = round((1/100)*n);
+k = round((2/100)*n);
 
 % vector that contains the exact result (1 entry for infected person)
 % pos_idx = vector containing indices of k number of infected persons

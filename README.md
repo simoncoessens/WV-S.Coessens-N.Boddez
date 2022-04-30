@@ -43,3 +43,9 @@ LINPROGRAMMING TOOLKITS:
 - CPLEX optimizer https://www.ibm.com/analytics/cplex-optimizer
 -   - **https://www.tu-chemnitz.de/mathematik/discrete/manuals/cplex/doc/getstart/html/ilocplex13.html**
 - Gorubi https://www.gurobi.com/
+
+TO DO gesprek 14/04:
+- limieten testen, maximale n vinden
+- Julia linear prog toolkit
+- sciensano paper bekijken
+- noisy-model

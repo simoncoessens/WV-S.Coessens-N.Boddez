@@ -25,7 +25,7 @@ b = double(logical(A*result));
 
 
 % f(x) wordt geminimaliseerd 
-% zodat A*x <= b en
+% zodat Ai*x <= bi en
 % Aj * x = 0 en (Aj = zie Malioutov problem in (8))
 % lb <= x <= ub
 f = ones(n,1);
@@ -43,24 +43,11 @@ for i = 1:m
     end
 end
 
+bj = zeros(m-norm(b,1),1);
+bi = ones(norm(b,1),1);
 
-% Calculate bi and bj
-bj = [];
-bi = [];
-counter_j = 1;
-counter_i = 1;
-for i=1:m
-    if b(i) == 0
-        bj(counter_j, 1) = 0;
-        counter_j = counter_j + 1;
-    else
-        bi(counter_i, 1) = b(i);
-        counter_i = counter_i + 1;
-    end
-end
-
-%options = optimoptions('linprog', 'Display', 'off');
-options = optimoptions('linprog');
+options = optimoptions('linprog', 'Display', 'off');
+%options = optimoptions('linprog');
 
 x = linprog(f, -Ai, -bi, Aj, bj, lb, ub, options);
 %x = linprog(f, -A, -b);

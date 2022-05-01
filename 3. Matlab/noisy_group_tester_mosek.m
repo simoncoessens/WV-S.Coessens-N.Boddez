@@ -8,10 +8,7 @@ function succes = noisy_group_tester_mosek(n, k, m)
 % pos_idx = vector containing indices of k number of infected persons
 result = zeros(n,1); 
 pos_idx = round((n-1)*rand(k,1)) + 1;
-pos_idx = sort(pos_idx);
-for i = 1:k
-   result(pos_idx(i)) = 1;
-end
+result(pos_idx) = 1;
 
 % A = Measurement matrix containing lineair combinations of samples
 % m = measurement size
@@ -30,22 +27,14 @@ b = double(logical(A*result));
 % lb <= x <= ub
 
 % Add noise
+noise = rand(size(b)) < 0.05;
 noisy_b = b;
-for i=1:m
-    noise = rand(1,1) < 0.05;
-    if noise
-        noisy_b(i) = not(b(i));
-    end
-end
-
-% Voor test purposes: stop programma (met code -1) als er geen noise is
-if noisy_b == b
-    succes = -1;
-    return;
-end
+noisy_b(noise) = not(noisy_b(noise));
 
 % Add extra rows to A to make it compattible with slack variables
-A = [A eye(size(A, 1))];
+A_slack = eye(size(A, 1));
+A_slack(:,logical(not(noisy_b))) = -A_slack(:,logical(not(noisy_b)));
+A = [A A_slack];
 
 f = ones(size(A, 2), 1);
 f(n:size(A,2)) = 1; % alpha
@@ -54,16 +43,11 @@ ubx = ones(size(A, 2),1);
 lbb = noisy_b; %lowerbound b
 ubb = zeros(m,1);
 
-% For Aj: set slack vars to negative and update their upperbound and set
-% the upper bound for bi to inf
-for i = 1:m
-    if noisy_b(i) == 0
-        A(i, n+i) = -1;
-        ubx(n+i) = Inf;
-    else
-        ubb(i) = Inf;
-    end
-end
+% Update upperbound for slack vars in J
+ubx(logical([zeros(n,1);not(noisy_b)])) = Inf;
+
+% Set the upper bound for bi to Inf
+ubb(logical(noisy_b)) = Inf;
 
 
 % make prob(lem) struct

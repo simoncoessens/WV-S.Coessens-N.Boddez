@@ -8,10 +8,7 @@ function succes = noisy_group_tester(n, k, m)
 % pos_idx = vector containing indices of k number of infected persons
 result = zeros(n,1); 
 pos_idx = round((n-1)*rand(k,1)) + 1;
-pos_idx = sort(pos_idx);
-for i = 1:k
-   result(pos_idx(i)) = 1;
-end
+result(pos_idx) = 1;
 
 % A = Measurement matrix containing lineair combinations of samples
 % m = measurement size
@@ -30,49 +27,37 @@ b = double(logical(A*result));
 % lb <= x <= ub
 
 % Add noise
+noise = rand(size(b)) < 0.05;
 noisy_b = b;
-for i=1:m
-    noise = rand(1,1) < 0.05;
-    if noise
-        noisy_b(i) = not(b(i));
-    end
-end
+noisy_b(noise) = not(noisy_b(noise));
+
 bj = zeros(m-norm(noisy_b,1),1);
 bi = ones(norm(noisy_b,1),1);
 
 % Add extra rows to A to make it compattible with slack variables
 A_original = A;
 A = [A eye(size(A, 1))];
+A = sparse(A);
 
 f = ones(size(A, 2), 1);
 f(n:size(A,2)) = 1; % alpha
 lb = zeros(size(A, 2),1);
 ub = ones(size(A, 2),1);
 
-% Split A up in Ai and Aj and set upperbound for slack vars in J
-Aj = zeros(0);
-Ai = zeros(0);
-for i = 1:m
-    if noisy_b(i) == 1
-        Ai = [Ai ; A(i,:)];
-    else 
-        A(i, n+i) = -1;
-        Aj = [Aj ; A(i,:)];
-        ub(n+i) = Inf;
-    end
-end
+% Split A up in Ai and Aj
+Ai = A(logical(noisy_b), :);
+Aj = A(logical(not(noisy_b)), :);
+% Make slack vars negative in Aj
+Aj(:, n+1:end) = -Aj(:, n+1:end);
+
+% Set upperbound for slack vars in J
+ub(logical([zeros(n,1);not(noisy_b)])) = Inf;
 
 
 %options = optimoptions('linprog', 'Display', 'off');
 options = optimoptions('linprog');
 
-if noisy_b == b
-    succes = -1;
-    return;
-end
-
 linprog_solution = linprog(f, -Ai, -bi, Aj, bj, lb, ub, options);
-%x = linprog(f, -A, -b);
 
 x = linprog_solution(1:n);
 slack = linprog_solution(n+1:size(linprog_solution));

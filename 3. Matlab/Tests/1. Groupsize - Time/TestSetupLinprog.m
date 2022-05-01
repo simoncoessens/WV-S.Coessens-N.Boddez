@@ -6,10 +6,7 @@ k = round(n*k_percent);
 % pos_idx = vector containing indices of k number of infected persons
 result = zeros(n,1); 
 pos_idx = round((n-1)*rand(k,1)) + 1;
-pos_idx = sort(pos_idx);
-for i = 1:k
-   result(pos_idx(i)) = 1;
-end
+result(pos_idx) = 1;
 
 
 % A = Measurement matrix containing lineair combinations of samples

@@ -48,4 +48,6 @@ TO DO gesprek 14/04:
 - limieten testen, maximale n vinden
 - Julia linear prog toolkit
 - sciensano paper bekijken
-- noisy-model
+
+Finale presentatie 3 mei: https://www.overleaf.com/6513162954gmnngdchrypj
+Paper eerste versie 6 mei: https://www.overleaf.com/5382991891qdfxvjztkhrf

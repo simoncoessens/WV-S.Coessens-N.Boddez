@@ -1,20 +1,27 @@
 % Tijdsmeting in functie van groepsgrootte
-k_min = 0.01;
-k_step = 0.001;
-k_max = 0.03;
-
-n_start = 1;
-n_step = 10;
-n_max = 1000;
-iter = 100;
-
 load("data1.mat");
 
-result = zeros(1);
-count = 1;
 
+iter = 100;
+
+result_timing = zeros(1);
+load("data1.mat");
+
+count_x = 1;
+count_y = 1;
 for n=n_start:n_step:n_max
-    
+    count_y = 1;
+    disp(['n:' num2str(n)]);
+    for k=k_min:k_step:k_max
+        disp(['k:' num2str(k)]);
+        m = result(count_y,count_x);
+        for i=1:iter
+            temp = Test(n,m,k,'lin');
+        end
+        result_timing(count_y,count_x) = temp/iter;
+        count_y = count_y + 1;
+    end
+    count_x = count_x + 1;
 end
 
 

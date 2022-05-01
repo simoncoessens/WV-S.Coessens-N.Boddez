@@ -4,6 +4,9 @@
 % z-as: frontier perfecte reconstructie
 p = 0.95;
 k = 2/100;
+n_start = 1;
+n_step = 100;
+n_max = 5000;
 
 step_m = 10;
 result = zeros(1,1);
@@ -11,7 +14,7 @@ count_x = 1;
 prev_m = 1;
 prev_y = 1;
 
-for n =1:100:5000
+for n =n_start:n_step:n_max
     reconstruction = false;
     disp('New n:');
     disp(n);

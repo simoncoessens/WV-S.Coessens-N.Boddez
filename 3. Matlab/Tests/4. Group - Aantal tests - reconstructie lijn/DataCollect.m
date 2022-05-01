@@ -4,12 +4,16 @@
 % z-as: frontier perfecte reconstructie
 p = 0.95;
 k = 2/100;
+n_start = 100;
+n_step = 100;
+n_max = 1000;
+
 step_m = 10;
 result = zeros(1,2);
 count = 0;
 scaling = 0.3;
 
-for n=100:100:1000
+for n=n_start:n_step:n_max
     reconstruction = false;
 
     step_m = round(n*0.05);

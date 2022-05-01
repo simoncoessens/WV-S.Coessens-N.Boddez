@@ -1,8 +1,7 @@
-% Group testing model solver using compressed sampling
-% n = group size
-% k = number of infected persons
-% m = number of tests
-function [succes] = group_tester_mosek(n, k, m)
+function [cmd, prob, param, result] = TestSetupMosek(n, m, k_percent)
+
+% aantal positieven
+k = round(n*k_percent);
 
 % vector that contains the exact result (1 entry for infected person)
 % pos_idx = vector containing indices of k number of infected persons
@@ -35,19 +34,7 @@ prob.bux = ones(n,1);  %upperbound x
 
 param=[];
 %param.MSK_IPAR_OPTIMIZER = 'MSK_OPTIMIZER_INTPNT'; % kies solver
+
 cmd = 'minimize echo(0)'; % echo(0) = geen output
-
-[rcode,res] = mosekopt(cmd,prob,param);
-
-res.rcode   = rcode;
-sol = res.sol;
-
-% Interior-point solution.
-%sol.itr.xx      % x solution.
-
-% Basic solution.
-%sol.bas.xx      % x solution in basic solution.
-
-succes = isequal(sol.bas.xx, result);
 end
 

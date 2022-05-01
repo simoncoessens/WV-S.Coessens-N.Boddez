@@ -9,9 +9,9 @@ function reconstruction = Test(n,m,k)
 % init linprog vars
 total_succes = 0;
 for i=1:100
-    [f, A, b, Aj, bj, lb, ub, result] = TestSetupLinprog(n,m,k);
+    [f, Ai, bi, Aj, bj, lb, ub, result] = TestSetupLinprog(n,m,k);
     options = optimoptions('linprog','Display','none'); 
-    x = linprog(f, -A, -b, Aj, bj, lb, ub, options);
+    x = linprog(f, -Ai, -bi, Aj, bj, lb, ub, options);
     total_succes = total_succes + isequal(x, result);
 end
 

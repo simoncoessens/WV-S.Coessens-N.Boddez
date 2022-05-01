@@ -2,26 +2,32 @@
 % x-as: group size
 % y-as: aantal tests
 % z-as: frontier perfecte reconstructie
-
+p = 0.95;
+k = 2/100;
 step_m = 10;
-result = [1 0.5];
-count = 1;
+result = zeros(1,2);
+count = 0;
+scaling = 0.3;
 
-for n=0:100:1000
+for n=100:100:1000
     reconstruction = false;
 
-    % scaling factor van vorig resultaat gebruiken om start m te vinden
-    scaling = result(count,2)/result(count,1);
-
-    step_m = n*0.05;
-    m = round(n*scaling) - step_m;
+    step_m = round(n*0.05);
+    %start m bepalen (efficienter zo om niet teveel overbodige
+    %berekeningen)
+    m = round(n*scaling*0.8) - step_m;
     disp('New n:');
     count = count + 1;
     while not(reconstruction)
         m = m + step_m;
         disp(m);
-        reconstruction = Test(n,m,2/100,0.9);
+        reconstruction = Test(n,m,k,p);
     end
     result(count,:) = [n,m];
+    %scalin factor voor volgende iter
+    scaling = m/n;
     disp(result);
 end
+
+
+save('filename.mat');

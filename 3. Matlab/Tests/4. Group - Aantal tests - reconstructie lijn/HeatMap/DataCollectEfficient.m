@@ -3,6 +3,7 @@
 % y-as: aantal tests
 % z-as: frontier perfecte reconstructie
 p = 0.95;
+k = 2/100;
 
 step_m = 10;
 result = zeros(1,1);
@@ -10,7 +11,7 @@ count_x = 1;
 prev_m = 1;
 prev_y = 1;
 
-for n =1:100:10000
+for n =1:100:5000
     reconstruction = false;
     disp('New n:');
     disp(n);
@@ -21,7 +22,7 @@ for n =1:100:10000
     prev_zero = true;        
     while not(reconstruction)
         disp(m);
-        perc_reconstruction = Test(n,m,2/100);
+        perc_reconstruction = Test(n,m,k);
         result(count_y,count_x) = perc_reconstruction;
         reconstruction = perc_reconstruction > p;
         if (prev_zero && (perc_reconstruction > 0))
@@ -54,9 +55,4 @@ for i=1:max_collumn
     end
 end
 
-% heatmap maken
-n = 1:100:1000;
-m = 1:step_m:max_row;
-imagesc(n,m,result)
-colormap default
-colorbar
+save('filename.mat');

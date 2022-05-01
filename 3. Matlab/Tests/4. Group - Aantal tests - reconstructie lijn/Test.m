@@ -8,16 +8,16 @@ function reconstruction = Test(n,m,k,p)
 
 % init linprog vars
 total_succes = 0;
-for i=1:10
-    [f, A, b, Aj, bj, lb, ub, result] = TestSetupLinprog(n,m,k);
+for i=1:100
+    [f, Ai, bi, Aj, bj, lb, ub, result] = TestSetupLinprog(n,m,k);
     options = optimoptions('linprog','Display','none'); 
-    x = linprog(f, -A, -b, Aj, bj, lb, ub, options);
+    x = linprog(f, -Ai, -bi, Aj, bj, lb, ub, options);
     total_succes = total_succes + isequal(x, result);
 end
 
 
 % true als reconstructieniveau boven p ligt
-if (total_succes/10) > p
+if (total_succes/100) > p
     reconstruction = true;
 else
     reconstruction = false;

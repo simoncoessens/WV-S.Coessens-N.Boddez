@@ -6,9 +6,10 @@ function elapsed_time = Test(n,m,k,alg)
 
 if alg == 'lin'
     % init linprog vars
-    [f, A, b, Aj, bj, lb, ub] = TestSetupLinprog(n,m,k);
+    [f, Ai, bi, Aj, bj, lb, ub] = TestSetupLinprog(n,m,k);
+    options = optimoptions('linprog','Display','none'); 
     tic;
-    linprog(f, -A, -b, Aj, bj, lb, ub, options);
+    linprog(f, -Ai, -bi, Aj, bj, lb, ub, options);
     elapsed_time = toc;
 else
     % init GNU

@@ -1,4 +1,4 @@
-function [f, A, b, Aj, bj, lb, ub, result] = TestSetupLinprog(n,m,k_percent)
+function [f, Ai, bi, Aj, bj, lb, ub, result] = TestSetupLinprog(n,m,k_percent)
 
 % aantal positieven
 k = round(n*k_percent);
@@ -24,19 +24,16 @@ b = double(logical(A*result));
 
 %------ oplossing via linprog ------
 % f(x) wordt geminimaliseerd 
-% zodat A*x <= b en
-% Aj * x = 0 en (Aj = zie Malioutov problem in (8))
+% zodat Ai*x <= bi en
+% Aj * x = bj en (Aj = zie Malioutov problem in (8))
 % lb <= x <= ub
 f = ones(n,1);
 lb = zeros(n,1);
 ub = ones(n,1);
 
-Aj = zeros(0);
-for i = 1:m
-    if b(i) == 0
-        Aj = [Aj ; A(i,:)];
-    end    
-end
-
-Aj = sparse(Aj);
 bj = zeros(m-norm(b,1),1);
+bi = ones(norm(b,1),1);
+
+% Split A up in Ai and Aj
+Ai = A(logical(b), :);
+Aj = A(logical(not(b)), :);

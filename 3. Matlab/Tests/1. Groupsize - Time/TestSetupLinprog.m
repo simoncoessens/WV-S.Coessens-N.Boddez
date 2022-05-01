@@ -24,8 +24,8 @@ b = double(logical(A*result));
 
 %------ oplossing via linprog ------
 % f(x) wordt geminimaliseerd 
-% zodat A*x <= b en
-% Aj * x = 0 en (Aj = zie Malioutov problem in (8))
+% zodat Ai*x <= bi en
+% Aj * x = bj en (Aj = zie Malioutov problem in (8))
 % lb <= x <= ub
 f = ones(n,1);
 lb = zeros(n,1);

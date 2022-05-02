@@ -3,12 +3,12 @@ load('100_19100_noiseless.mat');
 % gewone plot
 f = figure;
 f.Position = [100 100 600 400];
+hold on
+title('Reconstructielijn');
+xlabel('Groep grootte')
+ylabel('Aantal testen')
 
-title('Reconstructie per aantal metingen');
-xlabel('Aantal metingen')
-ylabel('Reconstructie percentage')
-
-plot(result(:,1),result(:,2));
+plot(result(:,1),result(:,2),LineWidth=2);
 
 set(gca,"FontSize",14);
 

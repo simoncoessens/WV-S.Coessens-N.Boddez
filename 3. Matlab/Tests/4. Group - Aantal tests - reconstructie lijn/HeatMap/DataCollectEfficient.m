@@ -2,11 +2,11 @@
 % x-as: group size
 % y-as: aantal tests
 % z-as: frontier perfecte reconstructie
-p = 0.95;
+p = 0.98;
 k = 2/100;
 n_start = 1;
 n_step = 100;
-n_max = 5000;
+n_max = 20000;
 
 step_m = 10;
 result = zeros(1,1);
@@ -16,15 +16,14 @@ prev_y = 1;
 
 for n =n_start:n_step:n_max
     reconstruction = false;
-    disp('New n:');
-    disp(n);
+    disp(['n:' num2str(n)]);
     
 
     m = prev_m;
     count_y = prev_y;
     prev_zero = true;        
     while not(reconstruction)
-        disp(m);
+        disp(['m:' num2str(m)]);
         perc_reconstruction = Test(n,m,k);
         result(count_y,count_x) = perc_reconstruction;
         reconstruction = perc_reconstruction > p;

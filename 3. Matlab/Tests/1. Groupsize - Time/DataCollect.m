@@ -6,6 +6,9 @@ n_step = 100;
 n_max = 5000;
 iter = 100;
 
+addpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
+
+
 % dit percentage bepaald het aantal testen dat we doen, zeker experimenteel
 % controleren of dit wel volledige reconstructie geeft
 m_perc = 0.45;
@@ -18,7 +21,7 @@ for n=n_start:n_step:n_max
     m = round(n*m_perc);
     temp = 0;
     for i=1:iter
-        temp = temp + Test(n,m,k,"mosek");
+        temp = temp + Test(n,m,k,"mosek noisy");
     end
     result(count) = temp/iter;
     count = count + 1;
@@ -26,5 +29,7 @@ end
 
 
 result = result';
-save('mosek_1_5000');
+save('mosek_noisy_1_5000.mat');
+
+rmpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
 

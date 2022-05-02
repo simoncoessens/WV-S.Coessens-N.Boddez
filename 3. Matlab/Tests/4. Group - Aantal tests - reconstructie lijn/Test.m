@@ -21,7 +21,7 @@ end
 
 
 % true als reconstructieniveau boven p ligt
-if (total_succes/100) > p
+if (total_succes/200) > p
     reconstruction = true;
 else
     reconstruction = false;

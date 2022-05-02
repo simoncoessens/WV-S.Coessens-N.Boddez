@@ -2,11 +2,11 @@
 % x-as: group size
 % y-as: aantal tests
 % z-as: frontier perfecte reconstructie
-p = 0.95;
+p = 0.98;
 k = 2/100;
 n_start = 100;
 n_step = 100;
-n_max = 1000;
+n_max = 10000;
 
 step_m = 10;
 result = zeros(1,2);
@@ -16,10 +16,11 @@ scaling = 0.3;
 for n=n_start:n_step:n_max
     reconstruction = false;
 
-    step_m = round(n*0.05);
+    step_m = round(n*0.02);
     %start m bepalen (efficienter zo om niet teveel overbodige
     %berekeningen)
     m = round(n*scaling*0.8) - step_m;
+    
     disp('New n:');
     count = count + 1;
     while not(reconstruction)

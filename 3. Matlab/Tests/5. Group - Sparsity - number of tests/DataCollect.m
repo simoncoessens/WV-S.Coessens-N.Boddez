@@ -3,13 +3,13 @@
 % y-as: sparsity
 % z-as: m aantal testen om perfecte reconstructie
 p = 0.95;
-k_min = 0.01;
+k_min = 0.001;
 k_step = 0.001;
-k_max = 0.03;
+k_max = 0.05;
 
-n_start = 200;
-n_step = 10;
-n_max = 300;
+n_start = 100;
+n_step = 500;
+n_max = 20000;
 
 m_step = 5;
 
@@ -25,6 +25,8 @@ for n=n_start:n_step:n_max
     disp(['n:' num2str(n)]);
     scaling = 0.01;
     count_k = 1;
+    %m_step meeschalen met n
+    m_step = round(n*0.02);
     for k=k_min:k_step:k_max
         disp(['k:' num2str(k)]);
         reconstruction = false;

@@ -6,7 +6,7 @@ function elapsed_time = Test(n,m,k,alg)
 
 if alg == "lin"
     % init linprog vars
-    [f, Ai, bi, Aj, bj, lb, ub, result] = TestSetupLinprog(n,m,k);
+    [f, Ai, bi, Aj, bj, lb, ub, result] = TestSetupNoisyLinprog(n,m,k);
     options = optimoptions('linprog','Display','none'); 
     tic;
     linprog(f, -Ai, -bi, Aj, bj, lb, ub, options);

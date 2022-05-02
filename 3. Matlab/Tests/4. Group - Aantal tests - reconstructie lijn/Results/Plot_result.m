@@ -1,4 +1,4 @@
-load('100-1000.mat');
+load('100_9600_linprog_noisy.mat');
 
 % gewone plot
 figure;

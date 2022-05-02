@@ -1,11 +1,11 @@
 % Tijdsmeting in functie van groepsgrootte
-load("data1.mat");
+clear;
+load("1_8100.mat");
 
 
 iter = 100;
 
 result_timing = zeros(1);
-load("data1.mat");
 
 count_x = 1;
 count_y = 1;

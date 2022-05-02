@@ -3,9 +3,9 @@
 f = figure;
 f.Position = [100 100 600 400];
 hold on
-title('Reconstructie per aantal metingen');
-xlabel('Aantal metingen');
-ylabel('Reconstructie percentage');
+title('Tijdsmeting Linprog Mosek');
+xlabel('Groepsgrootte');
+ylabel('Tijd in s');
 
 
 load("mosek_100_20000.mat");

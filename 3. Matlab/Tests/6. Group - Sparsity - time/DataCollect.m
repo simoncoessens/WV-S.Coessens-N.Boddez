@@ -1,18 +1,19 @@
 % Tijdsmeting in functie van groepsgrootte
 clear;
+load("timing_linprog_3d_1_8100.mat")
 load("1_8100.mat");
 
 
 iter = 100;
 
-result_timing = zeros(1);
+%result_timing = zeros(1);
 
 count_x = 1;
 count_y = 1;
-for n=n_start:n_step:n_max
+for n=8000:n_step:n_max
     count_y = 1;
     disp(['n:' num2str(n)]);
-    for k=k_min:k_step:k_max
+    for k=0.001:0.001:0.005
         disp(['k:' num2str(k)]);
         m = result(count_y,count_x);
         for i=1:iter

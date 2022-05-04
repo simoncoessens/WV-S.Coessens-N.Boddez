@@ -13,7 +13,7 @@ result(pos_idx) = 1;
 % m = measurement size
 % p = P(A_i,j == 1) = de kans dat een individu in een test zit
 p = 1/k;
-A = double(logical(sprand(m,n,p)));           
+A = double(logical(sprand(m,n,p)));      
 
 
 % b = undersampled measurement, b = A v result
@@ -24,7 +24,7 @@ b = double(logical(A*result));
 % blx <= x <= bux
 prob   = [];
 prob.c = ones(n,1);
-prob.a = sparse(A);
+prob.a = A;
 prob.blc = b; %lowerbound b
 ubb = zeros(m,1); %upperbound b
 ubb(logical(b)) = Inf;

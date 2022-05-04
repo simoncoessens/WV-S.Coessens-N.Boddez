@@ -3,7 +3,7 @@ clear;
 k = 2/100;
 n_start = 100;
 n_step = 100;
-n_max = 20000;
+n_max = 10000;
 iter = 100;
 
 % externe data bepaald m per groepsgrootte

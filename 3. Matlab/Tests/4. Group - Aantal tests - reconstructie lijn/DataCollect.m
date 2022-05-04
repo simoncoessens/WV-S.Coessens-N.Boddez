@@ -2,19 +2,19 @@
 % x-as: group size
 % y-as: aantal tests
 % z-as: frontier perfecte reconstructie
-p = 0.98;
+p = 0.95;
 k = 2/100;
-n_start = 100;
+n_start = 4000;
 
 n_step = 500;
-n_max = 10000;
+n_max = 100000000;
 
 
-
+addpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
 step_m = 10;
 result = zeros(1,2);
 count = 0;
-scaling = 0.3;
+scaling = 0.55;
 
 for n=n_start:n_step:n_max
     reconstruction = false;
@@ -37,6 +37,6 @@ for n=n_start:n_step:n_max
     scaling = m/n;
     disp(result);
 end
-
+rmpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
 
 save('filename.mat');

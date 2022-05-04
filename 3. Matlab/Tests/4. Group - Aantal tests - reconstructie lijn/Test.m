@@ -9,7 +9,7 @@ function reconstruction = Test(n,m,k,p)
 % init linprog vars
 total_succes = 0;
 for i=1:20
-    disp(["iter:" num2str(i)]);
+    %disp(["iter:" num2str(i)]);
     % init mosek
     %[cmd, prob, param, result] = TestSetupNoisyMosek(n,m,k);
     %[~,res] = mosekopt(cmd,prob,param);
@@ -18,7 +18,7 @@ for i=1:20
     
     succes = isequal(res.sol.bas.xx, result);
     total_succes = total_succes + succes;
-    disp(total_succes);
+    %disp(total_succes);
 end
 
 disp(total_succes/20);

@@ -2,11 +2,11 @@
 % x-as: group size
 % y-as: aantal tests
 % z-as: frontier perfecte reconstructie
-p = 0.98;
+p = 0.99;
 k = 2/100;
-n_start = 1;
+n_start = 100;
 n_step = 100;
-n_max = 20000;
+n_max = 5000;
 
 step_m = 10;
 result = zeros(1,1);

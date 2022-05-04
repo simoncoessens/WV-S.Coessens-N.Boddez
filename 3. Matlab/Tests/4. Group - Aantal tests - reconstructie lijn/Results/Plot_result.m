@@ -1,4 +1,4 @@
-load('100_19100_noiseless.mat');
+load('aantal_m_1000_191000.mat');
 
 % gewone plot
 f = figure;

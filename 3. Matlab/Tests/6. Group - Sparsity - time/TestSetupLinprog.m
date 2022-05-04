@@ -17,8 +17,7 @@ if k < 2
 else
     p = 1/k;
 end
-A = double(rand(m,n) < p);   
-A = sparse(A);
+A = logical(sprand(m,n,p));
 
 % b = undersampled measurement, b = A v result
 b = double(logical(A*result));

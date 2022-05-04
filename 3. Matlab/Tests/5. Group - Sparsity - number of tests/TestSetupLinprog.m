@@ -12,13 +12,8 @@ result(pos_idx) = 1;
 % A = Measurement matrix containing lineair combinations of samples
 % m = measurement size
 % p = P(A_i,j == 1) = de kans dat een individu in een test zit
-if k == 1
-    p = 1/2;
-else
-    p = 1/k;
-end
-A = double(rand(m,n) < p);   
-A = sparse(A);
+p = 1/k;
+A = logical(sprand(m,n,p));
 
 % b = undersampled measurement, b = A v result
 b = double(logical(A*result));

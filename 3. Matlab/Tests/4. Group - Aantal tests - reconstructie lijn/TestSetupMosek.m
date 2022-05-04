@@ -1,4 +1,4 @@
-function [cmd, prob, param, result] = TestSetupMosek(n, m, k_percent)
+function [cmd, prob, param] = TestSetupMosek(n, m, k_percent)
 
 % aantal positieven
 k = round(n*k_percent);
@@ -13,7 +13,7 @@ result(pos_idx) = 1;
 % m = measurement size
 % p = P(A_i,j == 1) = de kans dat een individu in een test zit
 p = 1/k;
-A = double(rand(m,n) < p);        
+A = double(logical(sprand(m,n,p)));      
 
 
 % b = undersampled measurement, b = A v result

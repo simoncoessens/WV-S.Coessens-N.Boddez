@@ -1,4 +1,4 @@
-function [cmd, prob, param, result] = TestSetupMosek(n, m, k_percent)
+function [cmd, prob, param] = TestSetupMosek(n, m, k_percent)
 
 % aantal positieven
 k = round(n*k_percent);

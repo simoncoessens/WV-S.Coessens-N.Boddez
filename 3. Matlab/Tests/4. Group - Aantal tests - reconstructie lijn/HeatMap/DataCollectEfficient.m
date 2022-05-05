@@ -5,8 +5,8 @@
 p = 0.99;
 k = 2/100;
 n_start = 100;
-n_step = 100;
-n_max = 10000;
+n_step = 1000;
+n_max = 20000;
 
 step_m = 20;
 result = zeros(1,1);

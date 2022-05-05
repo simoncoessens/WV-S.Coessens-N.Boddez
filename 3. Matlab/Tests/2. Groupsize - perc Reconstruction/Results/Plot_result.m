@@ -1,6 +1,6 @@
 % Malioutov plot
-load('mosek_noisless.mat');
-load('linprog_noisless.mat')
+load("GNU_noisless.mat");
+load('linprog_noisless_vs_GNU.mat');
 f = figure;
 f.Position = [100 100 600 400];
 hold on
@@ -12,8 +12,8 @@ xticks(0:25:150);
 
 plot(1:m_step:m_max,result,LineWidth=2);
 
-plot(1:m_step_lin:m_max_lin,result_lin,LineWidth=2);
+plot(1:m_step:m_max,result_lin,LineWidth=2);
 
-legend("Mosek","Linprog");
+legend("GNU","Linprog");
 
 set(gca,"FontSize",14);

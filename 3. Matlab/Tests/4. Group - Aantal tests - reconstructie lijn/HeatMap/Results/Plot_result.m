@@ -17,6 +17,7 @@ xlim([0 10000]);
 ylim([0 4541]);
 
 imagesc(n,m,result)
+colormap pink
 colorbar
 %set(gca,'YDir','normal')
 %colormap default

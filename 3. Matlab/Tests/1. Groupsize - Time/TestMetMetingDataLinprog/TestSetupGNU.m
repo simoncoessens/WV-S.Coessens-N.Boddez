@@ -1,7 +1,5 @@
-function [c, A, b, lb, ub, ctype, vartype, sense, param, result] = TestSetupGNU(n,m,k_percent)
+function [c, A, b, lb, ub, ctype, vartype, sense, param] = TestSetupGNU(n,m,k)
 
-% aantal positieven
-k = round(n*k_percent);
 % vector that contains the exact result (1 entry for infected person)
 % pos_idx = vector containing indices of k number of infected persons
 result = zeros(n,1); 

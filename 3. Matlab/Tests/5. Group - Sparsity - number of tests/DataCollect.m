@@ -2,13 +2,13 @@
 % x-as: group size
 % y-as: sparsity
 % z-as: m aantal testen om perfecte reconstructie
-p = 0.95;
+p = 0.99;
 k_min = 0.001;
 k_step = 0.001;
-k_max = 0.05;
+k_max = 0.04;
 
 n_start = 100;
-n_step = 500;
+n_step = 1000;
 n_max = 20000;
 
 m_step = 5;

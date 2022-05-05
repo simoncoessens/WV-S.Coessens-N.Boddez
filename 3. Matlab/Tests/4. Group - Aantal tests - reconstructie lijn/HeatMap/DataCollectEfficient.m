@@ -6,13 +6,14 @@ p = 0.99;
 k = 2/100;
 n_start = 100;
 n_step = 100;
-n_max = 5000;
+n_max = 10000;
 
-step_m = 10;
+step_m = 20;
 result = zeros(1,1);
 count_x = 1;
 prev_m = 1;
 prev_y = 1;
+addpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
 
 for n =n_start:n_step:n_max
     reconstruction = false;
@@ -57,4 +58,5 @@ for i=1:max_collumn
     end
 end
 
+rmpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
 save('filename.mat');

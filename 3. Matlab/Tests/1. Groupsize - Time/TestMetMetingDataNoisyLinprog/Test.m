@@ -19,12 +19,10 @@ elseif alg == "GNU"
     elapsed_time = toc;
 elseif alg == "mosek"
     % init mosek
-    addpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
-    [cmd, prob, param] = TestSetupMosek(n,m,k);
+    [cmd, prob, param] = TestSetupNoisyMosek(n,m,k);
     tic;
     mosekopt(cmd, prob, param);
     elapsed_time = toc;
-    rmpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
 else
     disp("parameter 'alg' is verkeerd, probeer 'lin', 'GNU' of 'mosek'");
 end

@@ -17,13 +17,15 @@ for n=n_start:n_step:n_max
     m = meting(count,2);
     temp = 0;
     for i=1:iter
-        temp = temp + Test(n,m,k,'lin');
+        temp = temp + Test(n,m,k,'mosek');
     end
     result(count) = temp/iter;
     count = count + 1;
 end
 
+result = zeros(1);
+count = 1;
 
 result = result';
-save('linprog_100_9600_noisy');
+save('mosek_100_9600_noisy');
 

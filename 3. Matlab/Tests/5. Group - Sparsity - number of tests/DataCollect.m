@@ -21,12 +21,14 @@ scaling = 0.01;
 count_k = 1;
 count_n = 1;
 
+addpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
+
 for n=n_start:n_step:n_max
     disp(['n:' num2str(n)]);
     scaling = 0.01;
     count_k = 1;
     %m_step meeschalen met n
-    m_step = round(n*0.02);
+    m_step = round(n*0.05);
     for k=k_min:k_step:k_max
         disp(['k:' num2str(k)]);
         reconstruction = false;
@@ -34,7 +36,7 @@ for n=n_start:n_step:n_max
         m = round(n * scaling) - m_step;
         while not(reconstruction)
             m = m + m_step;
-            disp(['m:' num2str(m)]);
+            %disp(['m:' num2str(m)]);
             reconstruction = Test(n,m,k,p);
         end
         %scaling factor voor volgende iter
@@ -44,6 +46,5 @@ for n=n_start:n_step:n_max
     end
     count_n = count_n + 1;
 end
-
 
 save('filename.mat');

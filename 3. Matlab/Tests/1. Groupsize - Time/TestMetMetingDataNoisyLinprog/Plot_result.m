@@ -3,7 +3,7 @@
 f = figure;
 f.Position = [100 100 600 400];
 hold on;
-title('Tijdsmeting Linprog noisy');
+title('Tijdsmeting Linprog Mosek noisy');
 xlabel('Groep grootte');
 ylabel('Tijd in s');
 

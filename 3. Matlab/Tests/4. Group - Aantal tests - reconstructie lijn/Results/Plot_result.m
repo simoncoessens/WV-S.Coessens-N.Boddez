@@ -1,14 +1,14 @@
-load('aantal_m_1000_191000.mat');
+load('100_19100_noiseless.mat');
 
 % gewone plot
 f = figure;
 f.Position = [100 100 600 400];
 hold on
 %title('Reconstructielijn');
-xlabel('Groep grootte')
+xlabel('Groepsgrootte')
 ylabel('Aantal testen')
 
-plot(result(:,1),result(:,2),LineWidth=2);
+plot(result(:,1),result(:,2),LineWidth=1.5);
 
 set(gca,"FontSize",14);
 

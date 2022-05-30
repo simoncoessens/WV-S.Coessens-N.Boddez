@@ -17,6 +17,6 @@ plot(1:m_step:m_max,result,LineWidth=1.5);
 load("GNU_noisless.mat");
 plot(1:m_step:m_max,result,LineWidth=1.5);
 
-legend("Mosek","Linprog","GNU");
+legend("Mosek","Linprog","Glpk");
 
-%set(gca,"FontSize",14);
+set(gca,"FontSize",14);

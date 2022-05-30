@@ -6,13 +6,13 @@ load("mosek_1000_191000.mat");
 f = figure;
 f.Position = [100 100 600 400];
 hold on
-title('Tijdsmeting Mosek');
+%title('Tijdsmeting Mosek');
 xlabel('Groepsgrootte');
 ylabel('Tijd in s');
 
 
 
-plot(n_start:n_step:192000,result,LineWidth=2);
+plot(n_start:n_step:192000,result,LineWidth=1.5);
 
 %load("linprog_100_20000.mat");
 %plot(n_start:n_step:n_max,result,LineWidth=2);

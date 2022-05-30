@@ -4,7 +4,7 @@ load('aantal_m_1000_191000.mat');
 f = figure;
 f.Position = [100 100 600 400];
 hold on
-title('Reconstructielijn');
+%title('Reconstructielijn');
 xlabel('Groep grootte')
 ylabel('Aantal testen')
 

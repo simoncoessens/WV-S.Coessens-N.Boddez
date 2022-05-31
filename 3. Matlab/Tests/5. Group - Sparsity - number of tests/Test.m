@@ -9,10 +9,11 @@ function reconstruction = Test(n,m,k,p)
 % init linprog vars
 total_succes = 0;
 for i=1:100
-    % init mosek
-    [cmd, prob, param, result] = TestSetupMosek(n,m,k);
-    [~,res] = mosekopt(cmd,prob,param);
-    total_succes = total_succes + isequal(res.sol.bas.xx, result);
+    [f, A, b, Aj, bj, lb, ub, result] = TestSetupNoisyLinprog(n,m,k);
+    options = optimoptions('linprog','Display','none'); 
+    x = linprog(f, -A, -b, Aj, bj, lb, ub, options);
+    succes = isequal(x(1:n), result);
+    total_succes = total_succes + succes;
 end
 
 

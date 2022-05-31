@@ -21,7 +21,7 @@ scaling = 0.01;
 count_k = 1;
 count_n = 1;
 
-addpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
+%addpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
 
 for n=n_start:n_step:n_max
     disp(['n:' num2str(n)]);

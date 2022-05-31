@@ -1,6 +1,7 @@
 load("noisy_numbertests.mat");
 figure
 hold on
+
 surf(n_start:n_step:14100,k_min:k_step:k_max,result)
 %title('Heatmap aantal testen');
 xlabel('Groep grootte');

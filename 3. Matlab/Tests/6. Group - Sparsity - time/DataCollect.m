@@ -1,8 +1,8 @@
 % Tijdsmeting in functie van groepsgrootte
 clear;
-load('100_20000.mat');
+load('noisy_numbertests.mat');
 
-addpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
+%addpath /home/simoncoessens/mosek/9.3/toolbox/r2015a;
 iter = 100;
 
 result_timing = zeros(1);
@@ -16,7 +16,7 @@ for n=n_start:n_step:n_max
         disp(['k:' num2str(k)]);
         m = result(count_y,count_x);
         for i=1:iter
-            temp = Test(n,m,k,"mosek");
+            temp = Test(n,m,k,"lin");
         end
         result_timing(count_y,count_x) = temp/iter;
         count_y = count_y + 1;

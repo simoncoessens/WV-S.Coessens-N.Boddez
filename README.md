@@ -1,57 +1,21 @@
-# WV:S.Coessens,N.Boddez
-Wetenschappelijke vorming 2021-2022
+# Efficiency Analysis of Compressed Sensing in a Boolean Setting
 
-# Onderzoeksvraag:
-H3. Hoe efficiënt is "efficiënt"? Snelheid van reconstructie op basis van compressed sensing[bewerken]
-Compressed sensing, of compressive sampling, is een razend populaire nieuwe richting in signaalverwerking - getuige ook het onderwerp hierboven. Het gaat om dezelfde techniek in beide projecten, maar in dit geval toegepast op afbeeldingen. Compressed sensing laat toe om een afbeelding te reconstrueren op basis van onvoldoende gegevens. Een klassieke 10-megapixel (10MP) camera doet dat niet: de camera zal eerst tien miljoen pixels "bemonsteren", en vervolgens wordt een gecomprimeerde voorstelling gemaakt, zoals een JPEG-bestand. Een compressed-sensing camera zal veel minder metingen doen, en tracht rechtstreeks de gecomprimeerde versie van de afbeelding te genereren.
+Bachelor thesis project at KUL for the bachelor of Informatics.
 
-De computationele uitdaging hier ligt in het opstellen van de kleine voorstelling op basis van de metingen. Dit gebeurt aan de hand van het oplossen een optimalisatieprobleem. Doorgaans wordt vermeld dat het echte optimalisatieprobleem dat zich aandient veel te duur is, het is zelfs NP-compleet. Vervolgens wordt uitgelegd dat een eenvoudiger optimalisatieprobleem kan opgelosten worden dat "efficiënt" is. Dat is vooral zo in vergelijking met het duurdere probleem. Maar hoe efficiënt is dat in praktijk? In dit project werken we niet met de wiskundige achtergrond van compressed sensing, maar trachten we aan de hand van voorbeelden te bepalen wat je van deze techniek kan verwachten met bestaande software. Voor de gecomprimeerde voorstelling van een afbeelding gebruiken we wavelets.
+<div align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/KU_Leuven_logo.svg/2560px-KU_Leuven_logo.svg.png" alt="screen" width="300"/>
+</div>
 
-Literatuur:
+## Authors
 
-Candes and Wakin (2008). An introduction to compressive sampling, IEEE Signal Processing Magazine 25(2), pp. 21-30. (https://authors.library.caltech.edu/10092/1/CANieeespm08.pdf)
-Wavelets with applications in signal and image processing. Cursustekst.
+Noé Boddez and Simon Coessens  
+KU Leuven, Faculty of Science  
+Contact: noe.boddez@student.kuleuven.be, simon.coessens@student.kuleuven.be
 
--> Via Toledo inschrijven vr de cursus "Wavelets with Applications in Signal and Image Processing (B-KUL-H03F7A)", rechtsboven bij beheer
+## Supervisor
 
+Daan Huybrechs
 
+## Abstract
 
-Videoreeks over Fourier transformatie in afbeeldingen: 
-- https://www.youtube.com/watch?v=bhxDXab0ffg
-- https://www.youtube.com/watch?v=PsEsMIPYJBg
-- https://www.youtube.com/watch?v=g8h-d1IJfGk
-- https://www.youtube.com/watch?v=SRGApjQRzks
-- https://www.youtube.com/watch?v=jQmlxMEi6j0
-
-
-Presentatie 8 november: https://www.overleaf.com/4192473368pxfwwbwrktsk
-
-Probleemstelling 6 december: https://www.overleaf.com/8958935127yfwbvgkpbbbm
-
-
-TO DO:
-- andere lineair programmeren toolkit gebruiken en testen
-- linprog runt in matlab of erbuiten?
-- een praktische toepassingen uitwerken
-- onderzoek spaarsheid 
-- hoe op departementale pc's testen?
-
-
-LINPROGRAMMING TOOLKITS:
-- linprog matlab
-- GNU Lineari programming https://en.wikipedia.org/wiki/GNU_Linear_Programming_Kit
-- CPLEX optimizer https://www.ibm.com/analytics/cplex-optimizer
--   - **https://www.tu-chemnitz.de/mathematik/discrete/manuals/cplex/doc/getstart/html/ilocplex13.html**
-- Gorubi https://www.gurobi.com/
-
-TO DO gesprek 14/04:
-- limieten testen, maximale n vinden
-- Julia linear prog toolkit
-- sciensano paper bekijken
-
-
-Finale presentatie 3 mei: https://www.overleaf.com/6513162954gmnngdchrypj
-
-Paper eerste versie 6 mei: https://www.overleaf.com/5382991891qdfxvjztkhrf
-
-https://www.overleaf.com/5535956442ngqcyydgstgf
+This repository contains the code and materials for the thesis "Efficiency Analysis of Compressed Sensing in a Boolean Setting." The project evaluates the practical efficiency of compressed sensing techniques for group testing, focusing on execution times using various optimization methods.
